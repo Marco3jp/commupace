@@ -1,0 +1,9 @@
+{
+    "name": "marco/community-space",
+    "description": "Space must have community. We assist making community.",
+    "type": "project",
+    "require": {
+        "sensio/framework-extra-bundle": "^5.3"
+    },
+    "license": "MIT"
+}

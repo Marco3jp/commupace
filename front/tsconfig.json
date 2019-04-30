@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es5",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@view/*": [
+        "./src/view/*"
+      ],
+      "@scripts/*": [
+        "./src/scripts/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ],
+      "@images/*": [
+        "./src/images/*"
+      ],
+      "@scss/*": [
+        "./src/scss/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
