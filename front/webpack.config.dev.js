@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base.js');
 
@@ -37,12 +38,9 @@ module.exports = merge(baseConfig(true), {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true,
-                            /*
                             data: `
-                                @import './src/scss/admin/_values.scss';
-                                @import './src/scss/_animate.scss';
+                                @import './src/scss/_values.scss';
                                 `
-                             */
                         }
                     }
                 ],

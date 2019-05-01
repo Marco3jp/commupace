@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -10,7 +9,7 @@ const path = require('path');
 module.exports = (isDev) => {
     return {
         entry: {
-            'main': './src/scripts/ts/main.ts',
+            'main': './src/scripts/main.ts',
         },
         mode: isDev ? "development" : "production",
         output: {
@@ -33,6 +32,10 @@ module.exports = (isDev) => {
             new VueLoaderPlugin(),
             new CopyWebpackPlugin([
                 {
+                    from: path.resolve(__dirname, 'src/scss/libs/normalize.css'),
+                    to: dist
+                },
+                {
                     from: path.resolve(__dirname, 'src/images'),
                     to: path.resolve(dist, 'static/images'),
                 },
@@ -43,12 +46,6 @@ module.exports = (isDev) => {
                 template: "./index.html",
                 filename: "./index.html"
             }),
-            new webpack.DefinePlugin({
-                API_PREFIX: JSON.stringify(API_PREFIX),
-                APP_VERSION: JSON.stringify(APP_VERSION),
-                STUDENT_AUTH_API_EP: JSON.stringify(`/${API_PREFIX}/${API_VERSION}/auth`),
-                STUDENT_API_EP: JSON.stringify(`/${API_PREFIX}/${API_VERSION}/service`),
-            })
         ],
     }
 };
