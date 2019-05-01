@@ -35,12 +35,8 @@
 </script>
 
 <style scoped lang="scss">
-    * {
-        box-sizing: border-box;
-    }
-
     #navigation-bar {
-        height: 9vh;
+        height: $navigation-bar-height;
         width: 100vw;
         bottom: 0;
         position: fixed;

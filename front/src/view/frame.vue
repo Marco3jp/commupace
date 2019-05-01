@@ -18,5 +18,8 @@
 </script>
 
 <style scoped lang="scss">
-
+    #main {
+        width: 100vw;
+        height: calc(100vh - #{$navigation-bar-height});
+    }
 </style>
