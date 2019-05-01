@@ -11,14 +11,14 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "bento/debian-9"
 
-  config.vm.hostname = 'community'
+  config.vm.hostname = 'commupace'
 
   config.vm.network :private_network, ip: "10.1.2.100"
 
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "community-service"
+    vb.name = "commupace-dev"
     vb.gui = false
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
