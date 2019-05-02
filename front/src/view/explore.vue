@@ -2,15 +2,17 @@
     <div>
         <div v-if="this.isErrorMessage" class="error-message" id="location-error"><p>{{errorMessage}}</p></div>
         <embed-map-component id="embed-map" v-if="completedPositioning" :position="location"></embed-map-component>
+        <community-list v-if="completedPositioning" :position="location"></community-list>
     </div>
 </template>
 
 <script lang="ts">
     import EmbedMapComponent from "@components/embedMapComponent.vue";
+    import CommunityList from "@components/community-list.vue";
 
     export default {
         name: "explore",
-        components: {EmbedMapComponent},
+        components: {CommunityList, EmbedMapComponent},
         data() {
             return {
                 location: {},

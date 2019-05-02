@@ -26,6 +26,7 @@ module.exports = (isDev) => {
                 '@store': path.resolve(__dirname, 'src/store'),
                 '@images': path.resolve(__dirname, 'src/images'),
                 '@scss': path.resolve(__dirname, 'src/scss'),
+                '@mock': path.resolve(__dirname, 'src/mock'),
             }
         },
         plugins: [

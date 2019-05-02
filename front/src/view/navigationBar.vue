@@ -1,14 +1,14 @@
 <template>
     <nav id="navigation-bar">
-        <router-link to="myPage" :class="{selecting: isMyPage}" class="navigation-bar-content"
+        <router-link :to="{name: 'myPage'}" :class="{selecting: isMyPage}" class="navigation-bar-content"
                      id="navigation-bar-users-cog">
             <i class="fas fa-users-cog"></i>
         </router-link>
-        <router-link to="community" :class="{selecting: isCommunity}" class="navigation-bar-content"
+        <router-link :to="{name: 'community'}" :class="{selecting: isCommunity}" class="navigation-bar-content"
                      id="navigation-bar-community">
             <i class="fas fa-comments"></i>
         </router-link>
-        <router-link to="explore" :class="{selecting: isExplore}" class="navigation-bar-content"
+        <router-link :to="{name: 'explore'}" :class="{selecting: isExplore}" class="navigation-bar-content"
                      id="navigation-bar-explore">
             <i class="fas fa-compass"></i>
         </router-link>
