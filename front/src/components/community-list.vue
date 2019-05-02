@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="community-list">
         <community-list-content :community="community" v-for="community in communityList"></community-list-content>
     </div>
 </template>
@@ -22,6 +22,8 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    #community-list {
+        overflow: scroll;
+    }
 </style>

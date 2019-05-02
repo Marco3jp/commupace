@@ -2,7 +2,7 @@
     <div>
         <div v-if="this.isErrorMessage" class="error-message" id="location-error"><p>{{errorMessage}}</p></div>
         <embed-map-component id="embed-map" v-if="completedPositioning" :position="location"></embed-map-component>
-        <community-list v-if="completedPositioning" :position="location"></community-list>
+        <community-list id="community-list" v-if="completedPositioning" :position="location"></community-list>
     </div>
 </template>
 
@@ -47,7 +47,14 @@
         width: 90%;
         padding: 10px 5%;
     }
-    #embed-map{
+
+    #embed-map {
         height: $explore-map-height;
+        width: 100%;
+    }
+
+    #community-list {
+        height: $explore-community-list-height;
+        width: 100%
     }
 </style>
