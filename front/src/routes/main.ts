@@ -3,7 +3,12 @@ import Router from 'vue-router';
 
 import Community from '@view/community'
 import CommunityFallback from '@view/communityFallBack'
+import CommunityFrame from '@view/frame/communityFrame.vue'
 import CommunityFront from '@view/communityFront.vue'
+import CommunityChat from '@view/communityChat'
+import CommunityThreadFrame from '@view/frame/communityThreadFrame'
+import CommunityThreadFront from '@view/communityThreadFront'
+import CommunityThread from '@view/communityThread'
 import Explore from '@view/explore'
 import MyPage from '@view/mypage'
 
@@ -33,8 +38,35 @@ export default new Router({
                 },
                 {
                     path: ':communityId',
-                    name: 'communityFront',
-                    component: CommunityFront
+                    component: CommunityFrame,
+                    children: [
+                        {
+                            path: '',
+                            name: 'communityFront',
+                            component: CommunityFront,
+                        },
+                        {
+                            path: 'chat',
+                            name: 'communityChat',
+                            component: CommunityChat,
+                        },
+                        {
+                            path: 'thread',
+                            component: CommunityThreadFrame,
+                            children: [
+                                {
+                                    path: '',
+                                    name: 'communityThreadFront',
+                                    component: CommunityThreadFront,
+                                },
+                                {
+                                    path: ':threadId',
+                                    name: 'communityThread',
+                                    component: CommunityThread,
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },

@@ -1,6 +1,14 @@
 <template>
     <div>
         <p>{{communityInfoMessage}}</p>
+        <div id="community-content">
+            <div id="community-content-chat">
+                <router-link :to="{name: 'communityChat'}">チャット</router-link>
+            </div>
+            <div id="community-content-thread">
+                <router-link :to="{name: 'communityThreadFront'}">掲示板</router-link>
+            </div>
+        </div>
     </div>
 </template>
 
