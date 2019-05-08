@@ -1,11 +1,12 @@
 <template>
     <div id="community-list">
-        <community-list-content :community="community" v-for="community in communityList"></community-list-content>
+        <community-list-content :community="community" v-for="(community, index) in communityList"
+                                :key="index"></community-list-content>
     </div>
 </template>
 
 <script lang="ts">
-    import CommunityListContent from "@components/community-list-content";
+    import CommunityListContent from "@components/communityListContent";
     import {communityListMock} from "@mock/communityList"
 
     export default {
