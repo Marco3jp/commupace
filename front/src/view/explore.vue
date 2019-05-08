@@ -8,7 +8,7 @@
 
 <script lang="ts">
     import EmbedMapComponent from "@components/embedMapComponent.vue";
-    import CommunityList from "@components/community-list.vue";
+    import CommunityList from "@components/communityList.vue";
 
     export default {
         name: "explore",
