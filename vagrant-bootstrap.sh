@@ -79,8 +79,11 @@ fi
 cp /vagrant/vagrant/sshd_config /etc/ssh/sshd_config
 
 # link working directory
+if [ ! -e /home/vagrant/commupace ]; then
+  ln -s /vagrant /home/vagrant/commupace
+fi
 if [ ! -e /home/vagrant/backend ]; then
-  ln -s /vagrant /home/vagrant/backend
+  ln -s /vagrant/back /home/vagrant/backend
 fi
 
 if [ ! -e /home/vagrant/frontend ]; then
