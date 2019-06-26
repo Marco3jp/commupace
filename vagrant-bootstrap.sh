@@ -46,6 +46,18 @@ export PATH=$PATH:/opt/node/bin
 echo "PATH=$PATH" > /etc/environment
 echo "export PATH=$PATH:/opt/php/bin" > /etc/profile.d/php.sh
 echo "export PATH=$PATH:/opt/php/sbin" >> /etc/profile.d/php.sh
+export MYSQL_USER=root
+echo MYSQL_USER=root >>/etc/environment
+export MYSQL_PASSWORD=$DBPASSWORD
+echo MYSQL_PASSWORD=$DBPASSWORD >>/etc/environment
+export MYSQL_LOCATE=localhost
+echo MYSQL_LOCATE=localhost >>/etc/environment
+export MYSQL_OPEN_CONN=1000
+echo MYSQL_OPEN_CONN=1000 >>/etc/environment
+export MYSQL_IDLE_CONN=700
+echo MYSQL_IDLE_CONN=700 >>/etc/environment
+export MYSQL_CONN_LIFETIME=10000
+echo MYSQL_CONN_LIFETIME=10000 >>/etc/environment
 source /etc/environment
 
 # download composer installer and install composer
