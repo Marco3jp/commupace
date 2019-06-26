@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-    import CommunityListContent from "@components/communityListContent";
+    import CommunityListContent from "@components/explore/communityListContent.vue";
     import {communityListMock} from "@mock/communityList"
 
     export default {
@@ -25,6 +25,6 @@
 
 <style scoped lang="scss">
     #community-list {
-        overflow: scroll;
+        overflow-y: scroll;
     }
 </style>
