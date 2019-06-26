@@ -15,7 +15,7 @@ $error-base-color: rgb(244, 67, 54);
 $navigation-bar-height: 9vh;
 
 $explore-map-height: 40vh;
-$explore-community-list-height: 40vh;
+$explore-community-list-height: calc(100% - 40vh);
 $explore-community-list-content-height: 6vh;
 $explore-community-list-content-vertical-padding: 1vh;
 $explore-community-list-inner-content-height: $explore-community-list-content-height - $explore-community-list-content-vertical-padding*2;
