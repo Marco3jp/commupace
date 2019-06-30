@@ -33,7 +33,10 @@
         "./src/scss/*"
       ],
       "@mock/*": [
-        ".src/mock/*"
+        ".src/test/mock/*"
+      ],
+      "@test/*": [
+        ".src/test/*"
       ]
     }
   },

@@ -8,7 +8,7 @@
 <script lang="ts">
     import TextBox from "./textBox";
     import SendButton from "./sendButton";
-    import {postChat} from "@mock/postChat";
+    import {postChat} from "@test/postChat";
 
     export default {
         name: "postTools",
