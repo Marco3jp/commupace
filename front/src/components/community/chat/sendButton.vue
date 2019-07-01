@@ -1,5 +1,7 @@
 <template>
-    <button @click="$emit('click')">送信</button>
+    <div @click="$emit('click')" id="send-button" title="Ctrl+Enter">
+        <span>送信</span>
+    </div>
 </template>
 
 <script lang="ts">
@@ -8,6 +10,9 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    #send-button {
+        border: 1px solid $secondary-light-color;
+        text-align: center;
+    }
 </style>
