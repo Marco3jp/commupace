@@ -1,8 +1,7 @@
 <template>
-    <div>
-        <p>ここはコミュニティのチャットを表示する場所です。</p>
-        <post-tools @post="post"></post-tools>
-        <speech-frame :postData="postData"></speech-frame>
+    <div id="community-chat">
+        <post-tools id="post-tools" @post="post"></post-tools>
+        <speech-frame id="speech-frame" :postData="postData"></speech-frame>
     </div>
 </template>
 
@@ -30,6 +29,21 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    #community-chat {
+        width: 100%;
+        height: 100%;
+        padding: 5%;
 
+        #post-tools {
+            width: 100%;
+            height: 10%;
+        }
+
+        #speech-frame {
+            margin-top: 5%;
+            width: 100%;
+            height: 90%;
+        }
+    }
 </style>
