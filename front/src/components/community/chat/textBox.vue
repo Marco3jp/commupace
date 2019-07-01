@@ -5,7 +5,6 @@
 <script lang="ts">
     export default {
         name: "textBox",
-        props: ['postText'],
         computed: {
             postText: {
                 get() {
