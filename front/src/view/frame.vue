@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="main">
-            <router-view id="wrapper"></router-view>
+            <router-view></router-view>
         </div>
         <navigation-bar></navigation-bar>
         <!--loading-overlay></loading-overlay-->
@@ -21,9 +21,5 @@
     #main {
         width: 100vw;
         height: calc(100vh - #{$navigation-bar-height});
-
-        #wrapper {
-            height: 100%;
-        }
     }
 </style>
