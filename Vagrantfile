@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'commupace'
 
   config.vm.network :private_network, ip: "10.1.2.100"
+  config.vm.network :forwarded_port, guest: 10000, host: 10000
 
   config.vm.synced_folder ".", "/vagrant"
 
