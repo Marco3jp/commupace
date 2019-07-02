@@ -1,5 +1,5 @@
 <template>
-    <textarea v-model="postText" @keydown.ctrl.enter="$emit('ctrl-enter')"></textarea>
+    <textarea autofocus v-model="postText" @keydown.ctrl.enter="$emit('ctrl-enter')"></textarea>
 </template>
 
 <script lang="ts">
