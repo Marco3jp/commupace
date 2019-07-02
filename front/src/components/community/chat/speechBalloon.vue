@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <div>名前：{{postData.postUser.userName}}</div>
-        <div>{{postData.postBody.text}}</div>
+    <div id="speech-balloon">
+        <div id="speech-user-name">名前：{{postData.postUser.userName}}</div>
+        <div id="speech-body">
+            <div id="speech-body-text">{{postData.postBody.text}}</div>
+        </div>
     </div>
 </template>
 
@@ -12,6 +14,12 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    #speech-balloon {
+        #speech-body {
+            #speech-body-text {
+                overflow-wrap: break-word;
+            }
+        }
+    }
 </style>
