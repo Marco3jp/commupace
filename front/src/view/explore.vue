@@ -46,6 +46,7 @@
     #location-error {
         width: 90%;
         padding: 10px 5%;
+        margin: auto;
     }
 
     #embed-map {
