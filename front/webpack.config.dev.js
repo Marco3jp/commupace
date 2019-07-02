@@ -68,6 +68,7 @@ module.exports = merge(baseConfig(true), {
         disableHostCheck: true,
         historyApiFallback: true,
         inline: true,
+        https: true,
     },
     resolve: {
         alias: {

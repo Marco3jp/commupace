@@ -84,6 +84,7 @@ cp /vagrant/vagrant/50-server.cnf /etc/mysql/mariadb.conf.d
 mysql -u root -p$DBPASSWORD < /vagrant/vagrant/recreateRootUser.sql
 
 #  nginx
+cp /vagrant/vagrant/server.* /home/vagrant/
 cp /vagrant/vagrant/web-server.conf /etc/nginx/sites-available/
 
 if [ ! -e /etc/nginx/sites-enabled/web-server.conf ]; then 
