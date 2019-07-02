@@ -36,10 +36,7 @@
 
 <style scoped lang="scss">
     #navigation-bar {
-        height: $navigation-bar-height;
         width: 100vw;
-        bottom: 0;
-        position: fixed;
         display: flex;
         padding-bottom: 1.5vh;
         padding-top: 1.5vh;

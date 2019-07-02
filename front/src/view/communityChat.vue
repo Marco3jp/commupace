@@ -35,15 +35,18 @@
         height: 100%;
         padding: 5%;
 
-        #post-tools {
-            width: 100%;
-            height: 10%;
-        }
-
         #speech-frame {
-            margin-top: 5%;
             width: 100%;
             height: 90%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-bottom: 5%;
+        }
+
+        #post-tools {
+            //margin-top: 5%;
+            width: 100%;
+            height: 10%;
         }
     }
 </style>

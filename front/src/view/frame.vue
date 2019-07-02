@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div id="commupace">
         <div id="main">
             <router-view></router-view>
         </div>
-        <navigation-bar></navigation-bar>
+        <navigation-bar id="navigation-bar"></navigation-bar>
         <!--loading-overlay></loading-overlay-->
     </div>
 </template>
@@ -18,8 +18,18 @@
 </script>
 
 <style scoped lang="scss">
-    #main {
-        width: 100vw;
-        height: calc(100vh - #{$navigation-bar-height});
+    #commupace {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        #main {
+            width: 100vw;
+            height: 90%;
+        }
+
+        #navigation-bar {
+            height: $navigation-bar-height;
+        }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="explore">
         <div v-if="this.isErrorMessage" class="error-message" id="location-error"><p>{{errorMessage}}</p></div>
         <embed-map-component id="embed-map" v-if="completedPositioning" :position="location"></embed-map-component>
         <community-list id="community-list" v-if="completedPositioning" :position="location"></community-list>
@@ -43,6 +43,10 @@
 </script>
 
 <style scoped lang="scss">
+    #explore {
+        height: 100%;
+    }
+
     #location-error {
         width: 90%;
         padding: 10px 5%;
