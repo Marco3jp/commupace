@@ -1,7 +1,7 @@
 <template>
     <div id="community-chat">
-        <post-tools id="post-tools" @post="post"></post-tools>
         <speech-frame id="speech-frame" :postData="postData"></speech-frame>
+        <post-tools id="post-tools" @post="post"></post-tools>
     </div>
 </template>
 
