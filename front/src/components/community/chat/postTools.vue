@@ -1,7 +1,7 @@
 <template>
     <div id="post-tools">
-        <text-box id="text-box" @ctrl-enter="post"></text-box>
-        <send-button id="send-button" @click="post"></send-button>
+        <text-box id="post-tools-text-box" @ctrl-enter="post"></text-box>
+        <send-button id="post-tools-send-button" @click="post"></send-button>
     </div>
 </template>
 
@@ -30,11 +30,11 @@
     #post-tools {
         display: flex;
 
-        #text-box {
             width: 70%;
+        #post-tools-text-box {
         }
 
-        #send-button {
+        #post-tools-send-button {
             margin-left: 5%;
             width: 30%;
             font-size: 250%;
