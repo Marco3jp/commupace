@@ -1,5 +1,6 @@
 <template>
-    <div @click="$emit('click')" id="send-button" title="Ctrl+Enter">
+    <div @click="$emit('click')" class="send-button" title="Ctrl+Enter">
+        <!-- TODO: ここPropsで渡せるようにしたい -->
         <span>送信</span>
     </div>
 </template>
@@ -11,7 +12,7 @@
 </script>
 
 <style scoped lang="scss">
-    #send-button {
+    .send-button {
         border: 1px solid $secondary-light-color;
         text-align: center;
         cursor: pointer;
