@@ -1,6 +1,12 @@
 <template>
     <div id="speech-balloon">
-        <div id="speech-user-name">{{postData.postUser.userName}}</div>
+        <div id="speech-balloon-meta">
+            <div id="speech-user-name">{{postData.postUser.userName}}</div>
+            <div id="speech-timestamp">
+                <span v-if="!isToday" class="speech-timestamp-date">{{date}}</span>
+                <span class="speech-timestamp-time">{{time}}</span>
+            </div>
+        </div>
         <div id="speech-body">
             <div id="speech-body-text">{{postData.postBody.text}}</div>
         </div>
@@ -11,6 +17,39 @@
     export default {
         name: "speechBalloon",
         props: ['postData'],
+        data: function () {
+            return {
+                postTime: {
+                    year: 0,
+                    month: 0,
+                    day: 0,
+                    hour: "0",
+                    minute: "0",
+                }
+            }
+        },
+        computed: {
+            isToday: function () {
+                const now = new Date();
+                return this.postTime.year === now.getFullYear()
+                    && this.postTime.month === now.getMonth()
+                    && this.postTime.day === now.getDay();
+            },
+            date: function () {
+                return `${this.postTime.month}/${this.postTime.day}`
+            },
+            time: function () {
+                return `${this.postTime.hour.substring(this.postTime.hour.length - 2)}:${this.postTime.minute.substring(this.postTime.minute.length - 2)}`
+            }
+        },
+        created(): void {
+            const date = new Date(parseInt(this.postData.postTime));
+            this.postTime.year = date.getFullYear();
+            this.postTime.month = date.getMonth();
+            this.postTime.day = date.getDay();
+            this.postTime.hour += date.getHours().toString();
+            this.postTime.minute += date.getMinutes().toString();
+        }
     }
 </script>
 
@@ -20,8 +59,18 @@
             margin-top: 10px;
         }
 
-        #speech-user-name {
-            color: $secondary-dark-color;
+        #speech-balloon-meta {
+            display: flex;
+            margin-bottom: 3px;
+
+            #speech-user-name {
+                color: $secondary-dark-color;
+                flex-grow: 1;
+            }
+
+            #speech-timestamp {
+                color: rgba($secondary-dark-color, .75);
+            }
         }
 
         #speech-body {
