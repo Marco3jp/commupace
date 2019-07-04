@@ -30,14 +30,18 @@
     #post-tools {
         display: flex;
 
-            width: 70%;
         #post-tools-text-box {
+            width: 75%;
+            font-size: 18px;
+            padding: 5px;
+            resize: none;
         }
 
         #post-tools-send-button {
             margin-left: 5%;
-            width: 30%;
-            font-size: 250%;
+            width: 20%;
+            font-size: 18px;
+            padding: 5px;
         }
     }
 </style>

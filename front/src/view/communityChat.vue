@@ -37,16 +37,16 @@
 
         #speech-frame {
             width: 100%;
-            height: 90%;
-            overflow-y: scroll;
+            height: calc(100% - #{$chat-post-tools-height * 1.75});
+            overflow-y: auto;
             overflow-x: hidden;
-            padding-bottom: 5%;
+            margin-bottom: $chat-post-tools-height * .75;
         }
 
         #post-tools {
             //margin-top: 5%;
             width: 100%;
-            height: 10%;
+            height: $chat-post-tools-height;
         }
     }
 </style>
