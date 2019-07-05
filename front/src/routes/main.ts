@@ -2,13 +2,13 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Community from '@view/community';
-import CommunityFallback from '@view/communityFallBack';
+import CommunityFallback from '@components/community/communityFallBack.vue';
 import CommunityFrame from '@view/frame/communityFrame.vue';
-import CommunityFront from '@view/communityFront.vue';
-import CommunityChat from '@view/communityChat';
+import CommunityFront from '@components/community/communityFront.vue';
+import CommunityChat from '@components/community/chat/communityChat.vue';
 import CommunityThreadFrame from '@view/frame/communityThreadFrame';
-import CommunityThreadFront from '@view/communityThreadFront';
-import CommunityThread from '@view/communityThread';
+import CommunityThreadFront from '@components/community/thread/communityThreadFront.vue';
+import CommunityThread from '@components/community/thread/communityThread.vue';
 import Explore from '@view/explore';
 import MyPage from '@view/mypage';
 

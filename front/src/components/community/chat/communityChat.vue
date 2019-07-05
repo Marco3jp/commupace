@@ -8,7 +8,7 @@
 <script lang="ts">
     import SpeechFrame from "@components/community/chat/speechFrame.vue";
     import PostTools from "@components/community/chat/postTools.vue";
-    import {chatPostListMock} from "../test/mock/chatPostList";
+    import {chatPostListMock} from "@mock/chatPostList";
 
     export default {
         name: "communityChat",
