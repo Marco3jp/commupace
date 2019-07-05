@@ -7,7 +7,7 @@ import CommunityFrame from '@view/frame/communityFrame.vue';
 import CommunityFront from '@components/community/communityFront.vue';
 import CommunityChat from '@components/community/chat/communityChat.vue';
 import CommunityThreadFrame from '@view/frame/communityThreadFrame';
-import CommunityThreadFront from '@components/community/thread/communityThreadFront.vue';
+import CommunityThreadFront from '@components/community/thread/communityThreadList.vue';
 import CommunityThread from '@components/community/thread/communityThread.vue';
 import Explore from '@view/explore';
 import MyPage from '@view/mypage';
