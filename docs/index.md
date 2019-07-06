@@ -3,3 +3,6 @@
 
 ## Now work
 進捗をdistに吐いたものが[こちら](dist/index.html)から見ることができます。サーバーは現在未実装です。
+
+## database
+![Commupace Database ER Model](commupace_db.png)
