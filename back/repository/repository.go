@@ -12,7 +12,7 @@ type ManagerAccountRepository interface {
 type CommunityAccountRepository interface {
 	Add(newCommunityAccount model.CommunityAccount) (id uint, err error)
 	FindOne(id uint) (communityAccount *model.CommunityAccount, err error)
-	FindFromManagerAccount(managerAccountId uint) (communityAccount []model.CommunityAccount, err error)
+	FindFromManagerAccount(managerAccountId uint) (communityAccounts []model.CommunityAccount, err error)
 	Update(newCommunityAccount *model.CommunityAccount) error
 	Delete(id uint) error
 }
@@ -20,7 +20,7 @@ type CommunityAccountRepository interface {
 type LocationRepository interface {
 	Add(newLocation model.Location) (id uint, err error)
 	FindOne(id uint) (location *model.Location, err error)
-	FindOneFromCoordinates(coordinates model.Coordinates) (location []model.Location, err error)
+	FindOneFromCoordinates(coordinates model.Coordinates) (locations []model.Location, err error)
 	Update(newLocation model.Location) error
 	Delete(id uint) error
 }
