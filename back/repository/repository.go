@@ -40,3 +40,11 @@ type CommunityRepository interface {
 	Update(newCommunity model.Community) error
 	Delete(id uint) error
 }
+
+type CommunityUserRepository interface {
+	Add(newCommunityUser model.CommunityUser) (id uint, err error)
+	FindOne(id uint) (communityUser *model.CommunityUser, err error)
+	FindFromCommunity(communityId uint) (communityUsers []model.CommunityUser, err error)
+	FindFromCommunityAccount(communityAccountId uint) (communityUsers []model.CommunityUser, err error)
+	Delete(id uint) error
+}
