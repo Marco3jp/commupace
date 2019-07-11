@@ -32,3 +32,11 @@ type SpaceRepository interface {
 	Update(newSpace model.Space) error
 	Delete(id uint) error
 }
+
+type CommunityRepository interface {
+	Add(newCommunity model.Community) (id uint, err error)
+	FindOne(id uint) (community *model.Community, err error)
+	FindFromSpace(spaceId uint) (communities []model.Community, err error)
+	Update(newCommunity model.Community) error
+	Delete(id uint) error
+}
