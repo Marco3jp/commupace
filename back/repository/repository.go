@@ -16,3 +16,11 @@ type CommunityAccountRepository interface {
 	Update(newCommunityAccount *model.CommunityAccount) error
 	Delete(id uint) error
 }
+
+type LocationRepository interface {
+	Add(newLocation model.Location) (id uint, err error)
+	FindOne(id uint) (location *model.Location, err error)
+	FindOneFromCoordinates(coordinates model.Coordinates) (location []model.Location, err error)
+	Update(newLocation model.Location) error
+	Delete(id uint) error
+}
