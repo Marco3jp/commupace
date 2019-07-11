@@ -48,3 +48,12 @@ type CommunityUserRepository interface {
 	FindFromCommunityAccount(communityAccountId uint) (communityUsers []model.CommunityUser, err error)
 	Delete(id uint) error
 }
+
+type PostRepository interface {
+	Add(newPost model.Post) (id uint, err error)
+	FindOne(id uint) (post *model.Post, err error)
+	//FindFromThread() TODO: Threadが実装されたら追加
+	FindFromCommunityId(communityId uint) (posts []model.Post, err error)
+	Update(newPost model.Post) error
+	Delete(id uint) error
+}
