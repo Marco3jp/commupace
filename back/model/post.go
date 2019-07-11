@@ -6,6 +6,7 @@ type Post struct {
 	gorm.Model
 	CommunityAccountID uint
 	ThreadID           uint
+	CommunityID        uint
 	PostText           string
 	PostNumber         uint
 	PostType           string
