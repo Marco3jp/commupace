@@ -51,7 +51,7 @@ type CommunityUserRepository interface {
 	FindFromCommunity(communityId uint) (communityUsers []model.CommunityUser, err error)
 	FindFromCommunityAccount(communityAccountId uint) (communityUsers []model.CommunityUser, err error)
 	FetchRangeFromCommunity(communityId uint, count uint) (communityUsers []model.CommunityUser, err error)
-	FetchRangeFromCommunityAccount(communityId uint, count uint) (communityUsers []model.CommunityUser, err error)
+	FetchRangeFromCommunityAccount(communityAccountId uint, count uint) (communityUsers []model.CommunityUser, err error)
 	Delete(id uint) error
 }
 
