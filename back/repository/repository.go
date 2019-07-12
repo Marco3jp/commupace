@@ -20,8 +20,8 @@ type CommunityAccountRepository interface {
 type LocationRepository interface {
 	Add(newLocation *model.Location) (id uint, err error)
 	FindOne(id uint) (location *model.Location, err error)
-	// 以下のメソッドは、引数の場所から近い場所をcount個返します
-	FetchRangeFromCoordinates(coordinates model.Coordinates, count uint) (locations []model.Location, err error)
+	// 以下のメソッドは、引数の場所から近い場所をIDの新しい順でcount個返します(近い順ではない)
+	FetchRangeFromCoordinates(coordinates model.Coordinates, zoomLevel uint,count uint) (locations []model.Location, err error)
 	Update(newLocation *model.Location) error
 	Delete(id uint) error
 }
