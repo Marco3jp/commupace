@@ -30,6 +30,7 @@ type SpaceRepository interface {
 	Add(newSpace *model.Space) (id uint, err error)
 	FindOne(id uint) (space *model.Space, err error)
 	FindFromLocation(locationId uint) (spaces []model.Space, err error)
+	// 以下のメソッドは、引数の場所にある空間を、IDの新しい順でcount個返します
 	FetchRangeFromLocation(locationId uint, count uint) (spaces []model.Space, err error)
 	Update(newSpace *model.Space) error
 	Delete(id uint) error
