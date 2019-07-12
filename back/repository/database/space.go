@@ -57,7 +57,6 @@ func (sr *SpaceRepositoryImpl) Update(newSpace *model.Space) error {
 	return nil
 }
 
-}
 func (sr *SpaceRepositoryImpl) Delete(id uint) error {
 	target := model.Space{}
 	target.ID = id
