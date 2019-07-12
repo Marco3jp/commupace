@@ -35,7 +35,7 @@ func (car *CommunityAccountRepositoryImpl) FindOne(id uint) (communityAccount *m
 }
 
 func (car *CommunityAccountRepositoryImpl) FindFromManagerAccount(managerAccountId uint) (communityAccounts []model.CommunityAccount, err error) {
-	if car.db.Where("ManagerAccountID = ?", managerAccountId).Find(communityAccounts).RecordNotFound() {
+	if car.db.Where("manager_account_id = ?", managerAccountId).Find(communityAccounts).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityAccountTable"}
 	}
 
