@@ -36,7 +36,7 @@ func (lr *LocationRepositoryImpl) FindOne(id uint) (location *model.Location, er
 
 // zoomLevelはGoogle Mapsと同様で、1 - 世界、20 - 建物となっている。
 // 180をzoomLevel回半分にして、coordinatesに対して加減算することで両角の座標を求める。
-// TODO: Module並の責務をRepositoryに置いてしまったので解体する
+// TODO: Module並の責務をRepositoryに置いてしまったので解体する, 暫定的に全件取得を用意して、パフォーマンスを見つつZoomLevelのバリデーションでうまくコントロールすることも考えられる
 func (lr *LocationRepositoryImpl) FetchRangeFromCoordinates(coordinates model.Coordinates, zoomLevel uint, count uint) (locations []model.Location, err error) {
 	searchRange := float64(180)
 	for i := uint(0); i < zoomLevel; i++ {
