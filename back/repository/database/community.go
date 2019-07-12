@@ -48,7 +48,6 @@ func (cr *CommunityRepositoryImpl) FetchRangeFromSpace(spaceId uint, count uint)
 	}
 
 	return communities, nil
-
 }
 
 func (cr *CommunityRepositoryImpl) Update(newCommunity *model.Community) error {

@@ -24,32 +24,32 @@ func (cur *CommunityUserRepositoryImpl) Add(newCommunityUser *model.CommunityUse
 	}
 
 	return newCommunityUser.ID, nil
-
 }
+
 func (cur *CommunityUserRepositoryImpl) FindOne(id uint) (communityUser *model.CommunityUser, err error) {
 	if cur.db.First(communityUser, id).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
 	}
 
 	return communityUser, nil
-
 }
+
 func (cur *CommunityUserRepositoryImpl) FindFromCommunity(communityId uint) (communityUsers []model.CommunityUser, err error) {
 	if cur.db.Where("community_id = ?", communityId).Find(communityUsers).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
 	}
 
 	return communityUsers, nil
-
 }
+
 func (cur *CommunityUserRepositoryImpl) FindFromCommunityAccount(communityAccountId uint) (communityUsers []model.CommunityUser, err error) {
 	if cur.db.Where("community_account_id = ?", communityAccountId).Find(communityUsers).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
 	}
 
 	return communityUsers, nil
-
 }
+
 func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunity(communityId uint, count uint) (communityUsers []model.CommunityUser, err error) {
 	if cur.db.Where("community_id = ?", communityId).Last(communityUsers, count).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
@@ -57,6 +57,7 @@ func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunity(communityId uint
 
 	return communityUsers, nil
 }
+
 func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunityAccount(communityAccountId uint, count uint) (communityUsers []model.CommunityUser, err error) {
 	if cur.db.Where("community_account_id = ?", communityAccountId).Last(communityUsers, count).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
@@ -64,6 +65,7 @@ func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunityAccount(community
 
 	return communityUsers, nil
 }
+
 func (cur *CommunityUserRepositoryImpl) Delete(id uint) error {
 	target := model.CommunityUser{}
 	target.ID = id

@@ -49,6 +49,7 @@ func (car *CommunityAccountRepositoryImpl) Update(newCommunityAccount *model.Com
 
 	return nil
 }
+
 func (car *CommunityAccountRepositoryImpl) Delete(id uint) error {
 	target := model.CommunityAccount{}
 	target.ID = id

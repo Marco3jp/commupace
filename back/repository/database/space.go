@@ -24,16 +24,16 @@ func (sr *SpaceRepositoryImpl) Add(newSpace *model.Space) (id uint, err error) {
 	}
 
 	return newSpace.ID, nil
-
 }
+
 func (sr *SpaceRepositoryImpl) FindOne(id uint) (space *model.Space, err error) {
 	if sr.db.First(space, id).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}
 	}
 
 	return space, nil
-
 }
+
 func (sr *SpaceRepositoryImpl) FindFromLocation(locationId uint) (spaces []model.Space, err error) {
 	if sr.db.Where("location_id = ?", locationId).Find(spaces).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}

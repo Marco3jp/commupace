@@ -24,8 +24,8 @@ func (lr *LocationRepositoryImpl) Add(newLocation *model.Location) (id uint, err
 	}
 
 	return newLocation.ID, nil
-
 }
+
 func (lr *LocationRepositoryImpl) FindOne(id uint) (location *model.Location, err error) {
 	if lr.db.First(location, id).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: ManagerAccountTable"}
