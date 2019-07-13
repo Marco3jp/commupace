@@ -21,8 +21,6 @@ func (mam *ManagerAccountModuleImpl) CreateManagerAccount() (managerAccountId st
 
 	managerAccount := &model.ManagerAccount{
 		ManagerAccountID: managerAccountId,
-		Email:            nil,
-		Password:         nil,
 	}
 
 	_, err = mam.ManagerAccountRepository.Add(managerAccount)
