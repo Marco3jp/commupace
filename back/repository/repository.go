@@ -9,6 +9,20 @@ type ManagerAccountRepository interface {
 	Delete(id uint) error
 }
 
+type AccessTokenRepository interface {
+	Add(managerAccountId uint, token string)
+	FindOne(managerAccountId uint) (token string, err error)
+	Update(managerAccountId uint, token string)
+	Delete(managerAccountId uint)
+}
+
+type RefreshTokenRepository interface {
+	Add(managerAccountId uint, token string)
+	FindOne(managerAccountId uint) (token string, err error)
+	Update(managerAccountId uint, token string)
+	Delete(managerAccountId uint)
+}
+
 type CommunityAccountRepository interface {
 	Add(newCommunityAccount *model.CommunityAccount) (id uint, err error)
 	FindOne(id uint) (communityAccount *model.CommunityAccount, err error)
