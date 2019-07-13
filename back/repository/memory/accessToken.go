@@ -10,7 +10,7 @@ type AccessTokenRepositoryImpl struct {
 	m *sync.Map
 }
 
-func NewLocationRepository(m *sync.Map) repository.AccessTokenRepository {
+func NewAccessTokenRepository(m *sync.Map) repository.AccessTokenRepository {
 	return &AccessTokenRepositoryImpl{m: m}
 }
 
