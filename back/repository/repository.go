@@ -26,6 +26,7 @@ type RefreshTokenRepository interface {
 type CommunityAccountRepository interface {
 	Add(newCommunityAccount *model.CommunityAccount) (id uint, err error)
 	FindOne(id uint) (communityAccount *model.CommunityAccount, err error)
+	FindOneFromDisplayId(displayId string) (communityAccount *model.CommunityAccount, err error)
 	FindFromManagerAccount(managerAccountId uint) (communityAccounts []model.CommunityAccount, err error)
 	Update(newCommunityAccount *model.CommunityAccount) error
 	Delete(id uint) error
@@ -35,7 +36,7 @@ type LocationRepository interface {
 	Add(newLocation *model.Location) (id uint, err error)
 	FindOne(id uint) (location *model.Location, err error)
 	// 以下のメソッドは、引数の場所から近い場所をIDの新しい順でcount個返します(近い順ではない)
-	FetchRangeFromCoordinates(coordinates model.Coordinates, zoomLevel uint,count uint) (locations []model.Location, err error)
+	FetchRangeFromCoordinates(coordinates model.Coordinates, zoomLevel uint, count uint) (locations []model.Location, err error)
 	Update(newLocation *model.Location) error
 	Delete(id uint) error
 }
@@ -53,6 +54,7 @@ type SpaceRepository interface {
 type CommunityRepository interface {
 	Add(newCommunity *model.Community) (id uint, err error)
 	FindOne(id uint) (community *model.Community, err error)
+	FindOneFromCommunityId(communityId string) (community *model.Community, err error)
 	FindFromSpace(spaceId uint) (communities []model.Community, err error)
 	FetchRangeFromSpace(spaceId uint, count uint) (communities []model.Community, err error)
 	Update(newCommunity *model.Community) error
