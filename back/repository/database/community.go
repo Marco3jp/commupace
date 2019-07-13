@@ -34,6 +34,14 @@ func (cr *CommunityRepositoryImpl) FindOne(id uint) (community *model.Community,
 	return community, nil
 }
 
+func (cr *CommunityRepositoryImpl) FindOneFromCommunityId(communityId string) (community *model.Community, err error) {
+	if cr.db.Where("community_id = ?", communityId).First(community).RecordNotFound() {
+		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
+	}
+
+	return community, nil
+}
+
 func (cr *CommunityRepositoryImpl) FindFromSpace(spaceId uint) (communities []model.Community, err error) {
 	if cr.db.Where("space_id = ?", spaceId).Find(communities).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
