@@ -34,6 +34,14 @@ func (car *CommunityAccountRepositoryImpl) FindOne(id uint) (communityAccount *m
 	return communityAccount, nil
 }
 
+func (car *CommunityAccountRepositoryImpl) FindOneFromDisplayId(displayId string) (communityAccount *model.CommunityAccount, err error) {
+	if car.db.Where("display_id = ?", displayId).First(communityAccount).RecordNotFound() {
+		return nil, &repository.NotFoundRecordError{"Action: CommunityAccountTable"}
+	}
+
+	return communityAccount, nil
+}
+
 func (car *CommunityAccountRepositoryImpl) FindFromManagerAccount(managerAccountId uint) (communityAccounts []model.CommunityAccount, err error) {
 	if car.db.Where("manager_account_id = ?", managerAccountId).Find(communityAccounts).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityAccountTable"}
