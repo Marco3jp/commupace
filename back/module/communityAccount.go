@@ -11,8 +11,8 @@ type CommunityAccountModuleImpl struct {
 	CommunityUserRepo    repository.CommunityUserRepository
 }
 
-func NewCommunityAccountModuleImpl(communityAccountRepo *repository.CommunityAccountRepository) CommunityAccountModule {
-	return &CommunityAccountModuleImpl{CommunityAccountRepo: communityAccountRepo}
+func NewCommunityAccountModule(car repository.CommunityAccountRepository) CommunityAccountModule {
+	return &CommunityAccountModuleImpl{CommunityAccountRepo: car}
 }
 
 func (cam *CommunityAccountModuleImpl) CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount) (err error) {
