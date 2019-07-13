@@ -8,3 +8,8 @@ type TokenModule interface {
 	IsValidAccessToken(accessToken string, managerAccountId string) bool
 	// isValidRefreshToken()
 }
+
+type ManagerAccountModule interface {
+	CreateManagerAccount() (managerAccountId string, err error)
+	// UpdateManagerAccount()
+}
