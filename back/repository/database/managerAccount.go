@@ -34,6 +34,14 @@ func (mar *ManagerAccountRepositoryImpl) FindOne(id uint) (managerAccount *model
 	return managerAccount, nil
 }
 
+func (mar *ManagerAccountRepositoryImpl) FindOneFromManagerAccountId(managerAccountId string) (managerAccount *model.ManagerAccount, err error) {
+	if mar.db.Where("manager_account_id = ?", managerAccountId).First(managerAccount).RecordNotFound() {
+		return nil, &repository.NotFoundRecordError{"Action: ManagerAccountTable"}
+	}
+
+	return managerAccount, nil
+}
+
 func (mar *ManagerAccountRepositoryImpl) Update(newManagerAccount *model.ManagerAccount) error {
 	if err := mar.db.Save(newManagerAccount).Error; err != nil {
 		return &repository.IOError{err.Error()}
