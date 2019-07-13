@@ -2,9 +2,7 @@ package module
 
 import (
 	"../repository"
-	"github.com/satori/go.uuid"
 	"time"
-	"strings"
 )
 
 type TokenModuleImpl struct {
@@ -17,12 +15,12 @@ func NewTokenModule(atr *repository.AccessTokenRepository, rtr *repository.Refre
 }
 
 func (tm *TokenModuleImpl) CreateToken(managerAccountId string) (accessToken string, refreshToken string, err error) {
-	accessToken, err = createNewToken()
+	accessToken, err = CreateUUIDWithoutHyphen()
 	if err != nil {
 		return "", "", err
 	}
 
-	refreshToken, err = createNewToken()
+	refreshToken, err = CreateUUIDWithoutHyphen()
 	if err != nil {
 		return "", "", err
 	}
@@ -49,12 +47,12 @@ func (tm *TokenModuleImpl) RefreshToken(managerAccountId string, refreshToken st
 		return "", "", &InvalidRequestError{err.Error()}
 	}
 
-	newAccessToken, err = createNewToken()
+	newAccessToken, err = CreateUUIDWithoutHyphen()
 	if err != nil {
 		return "", "", err
 	}
 
-	newRefreshToken, err = createNewToken()
+	newRefreshToken, err = CreateUUIDWithoutHyphen()
 	if err != nil {
 		return "", "", err
 	}
@@ -84,14 +82,4 @@ func isExpiredToken(exp int64) bool {
 	} else {
 		return false
 	}
-}
-
-// ハイフンなしのUUID文字列を返します
-func createNewToken() (token string, err error) {
-	rawToken, err := uuid.NewV4()
-	if err != nil {
-		return "", &UUIDCreateError{err.Error()}
-	}
-
-	return strings.Replace(rawToken.String(), "-", "", -1), nil
 }
