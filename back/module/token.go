@@ -10,7 +10,7 @@ type TokenModuleImpl struct {
 	RefreshTokenRepo repository.RefreshTokenRepository
 }
 
-func NewTokenModule(atr *repository.AccessTokenRepository, rtr *repository.RefreshTokenRepository) TokenModule {
+func NewTokenModule(atr repository.AccessTokenRepository, rtr repository.RefreshTokenRepository) TokenModule {
 	return &TokenModuleImpl{AccessTokenRepo: atr, RefreshTokenRepo: rtr}
 }
 

@@ -9,7 +9,7 @@ type ManagerAccountModuleImpl struct {
 	ManagerAccountRepository repository.ManagerAccountRepository
 }
 
-func NewManagerAccountModule(mar *repository.ManagerAccountRepository) ManagerAccountModule {
+func NewManagerAccountModule(mar repository.ManagerAccountRepository) ManagerAccountModule {
 	return &ManagerAccountModuleImpl{ManagerAccountRepository: mar}
 }
 
