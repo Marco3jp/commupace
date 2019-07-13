@@ -1,5 +1,9 @@
 package module
 
+import (
+	"../model"
+)
+
 type TokenModule interface {
 	CreateToken(managerAccountId string) (accessToken string, refreshToken string, err error)
 	RefreshToken(managerAccountId string, refreshToken string) (newAccessToken string, newRefreshToken string, err error)
@@ -13,3 +17,11 @@ type ManagerAccountModule interface {
 	CreateManagerAccount() (managerAccountId string, err error)
 	// UpdateManagerAccount()
 }
+
+type CommunityAccountModule interface {
+	CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount) (err error)
+	JoinCommunity(communityAccountId string, communityId string) error
+
+	// LeaveCommunity() error
+}
+
