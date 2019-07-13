@@ -10,17 +10,17 @@ type ManagerAccountRepository interface {
 }
 
 type AccessTokenRepository interface {
-	Add(managerAccountId uint, token string)
-	FindOne(managerAccountId uint) (token string, err error)
-	Update(managerAccountId uint, token string)
-	Delete(managerAccountId uint)
+	Add(token string, managerAccountId string, exp int64)
+	FindOne(token string) (managerAccountId string, exp int64, err error)
+	Update(token string, managerAccountId string, exp int64)
+	Delete(token string)
 }
 
 type RefreshTokenRepository interface {
-	Add(managerAccountId uint, token string)
-	FindOne(managerAccountId uint) (token string, err error)
-	Update(managerAccountId uint, token string)
-	Delete(managerAccountId uint)
+	Add(token string, managerAccountId string, exp int64)
+	FindOne(token string) (managerAccountId string, exp int64, err error)
+	Update(token string, managerAccountId string, exp int64)
+	Delete(token string)
 }
 
 type CommunityAccountRepository interface {
