@@ -25,7 +25,7 @@ func (atr *AccessTokenRepositoryImpl) FindOne(token string) (managerAccountId st
 		return "", 0, &repository.NotFoundRecordError{"Action: AccessTokenMemory"}
 	}
 
-	return result.(model.AccessTokenValues).managerAccountID, result.(model.AccessTokenValues).exp , nil
+	return result.(model.AccessTokenValues).ManagerAccountID, result.(model.AccessTokenValues).Exp , nil
 }
 
 func (atr *AccessTokenRepositoryImpl) Update(token string, managerAccountId string, exp int64) {

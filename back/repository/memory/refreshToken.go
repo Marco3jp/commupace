@@ -25,7 +25,7 @@ func (rtr *RefreshTokenRepositoryImpl) FindOne(token string) (managerAccountId s
 		return "", 0, &repository.NotFoundRecordError{"Action: RefreshTokenMemory"}
 	}
 
-	return result.(model.RefreshTokenValues).managerAccountID, result.(model.RefreshTokenValues).exp, nil
+	return result.(model.RefreshTokenValues).ManagerAccountID, result.(model.RefreshTokenValues).Exp, nil
 }
 
 func (rtr *RefreshTokenRepositoryImpl) Update(token string, managerAccountId string, exp int64) {
