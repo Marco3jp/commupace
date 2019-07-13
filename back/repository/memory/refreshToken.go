@@ -10,7 +10,7 @@ type RefreshTokenRepositoryImpl struct {
 	m *sync.Map
 }
 
-func RefreshTokenRepository(m *sync.Map) repository.RefreshTokenRepository {
+func NewRefreshTokenRepository(m *sync.Map) repository.RefreshTokenRepository {
 	return &RefreshTokenRepositoryImpl{m: m}
 }
 
@@ -25,7 +25,7 @@ func (rtr *RefreshTokenRepositoryImpl) FindOne(token string) (managerAccountId s
 		return "", 0, &repository.NotFoundRecordError{"Action: RefreshTokenMemory"}
 	}
 
-	return result.(model.RefreshTokenValues).managerAccountID, result.(model.RefreshTokenValues).exp , nil
+	return result.(model.RefreshTokenValues).managerAccountID, result.(model.RefreshTokenValues).exp, nil
 }
 
 func (rtr *RefreshTokenRepositoryImpl) Update(token string, managerAccountId string, exp int64) {

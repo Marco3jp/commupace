@@ -10,7 +10,7 @@ type PostRepositoryImpl struct {
 	db *gorm.DB
 }
 
-func PostRepository(db *gorm.DB) repository.PostRepository {
+func NewPostRepository(db *gorm.DB) repository.PostRepository {
 	return &PostRepositoryImpl{db: db}
 }
 

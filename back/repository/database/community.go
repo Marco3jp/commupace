@@ -10,7 +10,7 @@ type CommunityRepositoryImpl struct {
 	db *gorm.DB
 }
 
-func CommunityRepository(db *gorm.DB) repository.CommunityRepository {
+func NewCommunityRepository(db *gorm.DB) repository.CommunityRepository {
 	return &CommunityRepositoryImpl{db: db}
 }
 
