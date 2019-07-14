@@ -25,3 +25,8 @@ type CommunityAccountModule interface {
 	// LeaveCommunity() error
 }
 
+type CommunityModule interface {
+	// TODO: 最速で用意する
+	// CreateCommunity() (communityId string, err error)
+	SearchCommunityFromCoordinates(coordinates model.Coordinates, zoomLevel uint) (communityList []model.Community, err error)
+}
