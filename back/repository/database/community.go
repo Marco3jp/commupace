@@ -58,6 +58,14 @@ func (cr *CommunityRepositoryImpl) FetchRangeFromSpace(spaceId uint, count uint)
 	return communities, nil
 }
 
+func (cr *CommunityRepositoryImpl) FetchRangeFromSpaces(spaceIds []uint, count uint) (communities []model.Community, err error) {
+	if cr.db.Where("space_id IN (?)", spaceIds).Last(communities, count).RecordNotFound() {
+		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
+	}
+
+	return communities, nil
+}
+
 func (cr *CommunityRepositoryImpl) Update(newCommunity *model.Community) error {
 	if err := cr.db.Save(newCommunity).Error; err != nil {
 		return &repository.IOError{err.Error()}
