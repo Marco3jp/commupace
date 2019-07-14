@@ -48,6 +48,8 @@ type SpaceRepository interface {
 	FindFromLocation(locationId uint) (spaces []model.Space, err error)
 	// 以下のメソッドは、引数の場所にある空間を、IDの新しい順でcount個返します
 	FetchRangeFromLocation(locationId uint, count uint) (spaces []model.Space, err error)
+	// 以下のメソッドは、引数の場所たちにある空間を、IDの新しい順でcount個返します
+	FetchRangeFromLocations(locationIds []uint, count uint) (spaces []model.Space, err error)
 	Update(newSpace *model.Space) error
 	Delete(id uint) error
 }
@@ -58,6 +60,7 @@ type CommunityRepository interface {
 	FindOneFromCommunityId(communityId string) (community *model.Community, err error)
 	FindFromSpace(spaceId uint) (communities []model.Community, err error)
 	FetchRangeFromSpace(spaceId uint, count uint) (communities []model.Community, err error)
+	FetchRangeFromSpaces(spaceIds []uint, count uint) (communities []model.Community, err error)
 	Update(newCommunity *model.Community) error
 	Delete(id uint) error
 }
