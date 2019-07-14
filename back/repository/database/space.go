@@ -50,6 +50,14 @@ func (sr *SpaceRepositoryImpl) FetchRangeFromLocation(locationId uint, count uin
 	return spaces, nil
 }
 
+func (sr *SpaceRepositoryImpl) FetchRangeFromLocations(locationIds []uint, count uint) (spaces []model.Space, err error) {
+	if sr.db.Where("location_id IN (?)", locationIds).Last(spaces, count).RecordNotFound() {
+		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}
+	}
+
+	return spaces, nil
+}
+
 func (sr *SpaceRepositoryImpl) Update(newSpace *model.Space) error {
 	if err := sr.db.Save(newSpace).Error; err != nil {
 		return &repository.IOError{err.Error()}
