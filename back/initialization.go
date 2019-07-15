@@ -49,33 +49,30 @@ func initRouting(r *gin.Engine) {
 			// auth.POST("/sign_in")
 			// auth.POST("/refresh")
 		}
-		/*
 		managerAccount := api.Group("/manager_account")
 		{
-			managerAccount.POST("/add_community_account")
-			managerAccount.GET("/community_account_list")
+			managerAccount.POST("/add_community_account", apiHandler.AddCommunityAccount)
+			// managerAccount.GET("/community_account_list")
 			// managerAccount.PATCH("/info")
 		}
-
+		/*
 		communityAccount := api.Group("/community_account")
 		{
 			communityAccount.GET("/info")
 			communityAccount.PATCH("/info")
 		}
 		*/
-		community := api.Group("/community", apiHandler.SearchCommunity)
+		community := api.Group("/community")
 		{
 			// community.POST("/create")
-			community.GET("/search")
+			community.GET("/search", apiHandler.SearchCommunity)
 			// community.GET("/info")
 			// community.PATCH("/info")
 		}
-		/*
 		chat := community.Group("/chat")
 		{
-			chat.GET("/post")
-			chat.POST("/post")
+			// chat.GET("/post")
+			chat.POST("/post", apiHandler.PostChat)
 		}
-		*/
 	}
 }
