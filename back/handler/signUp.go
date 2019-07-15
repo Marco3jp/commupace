@@ -22,9 +22,10 @@ func (a *APIHandler) SignUp(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{
-		"ok":           true,
-		"accessToken":  accessToken,
-		"refreshToken": refreshToken,
+		"ok":               true,
+		"accessToken":      accessToken,
+		"refreshToken":     refreshToken,
+		"managerAccountId": managerAccountId,
 	})
 	return
 }
