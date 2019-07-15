@@ -15,26 +15,29 @@ var (
 	managerAccountModule   module.ManagerAccountModule
 	communityAccountModule module.CommunityAccountModule
 	communityModule        module.CommunityModule
+	chatModule             module.ChatModule
 	apiHandler             *handler.APIHandler
 )
 
 func initObjects(db *gorm.DB) {
 	mar := database.NewManagerAccountRepository(db)
 	car := database.NewCommunityAccountRepository(db)
-	// cur := database.NewCommunityUserRepository(db)
+
+	cur := database.NewCommunityUserRepository(db)
 	lr := database.NewLocationRepository(db)
 	sr := database.NewSpaceRepository(db)
 	cr := database.NewCommunityRepository(db)
-	// pr := database.NewPostRepository(db)
+	pr := database.NewPostRepository(db)
 	atr := memory.NewAccessTokenRepository(&sync.Map{})
 	rtr := memory.NewRefreshTokenRepository(&sync.Map{})
 
 	tokenModule = module.NewTokenModule(atr, rtr)
 	managerAccountModule = module.NewManagerAccountModule(mar)
-	communityAccountModule = module.NewCommunityAccountModule(car)
+	communityAccountModule = module.NewCommunityAccountModule(mar, car, cur)
 	communityModule = module.NewCommunityModule(lr, sr, cr)
+	chatModule = module.NewChatModule(pr)
 
-	apiHandler = handler.NewAPIHandler(tokenModule, managerAccountModule, communityAccountModule, communityModule)
+	apiHandler = handler.NewAPIHandler(tokenModule, managerAccountModule, communityAccountModule, communityModule, chatModule)
 }
 
 func initRouting(r *gin.Engine) {
