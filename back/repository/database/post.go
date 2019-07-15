@@ -15,14 +15,28 @@ func NewPostRepository(db *gorm.DB) repository.PostRepository {
 }
 
 func (pr *PostRepositoryImpl) Add(newPost *model.Post) (id uint, err error) {
-	if !pr.db.NewRecord(*newPost) {
+	tx := pr.db.Begin()
+
+	var lastPost model.Post
+	postNum := uint(0)
+
+	if !tx.Where("community_id = ?", newPost.CommunityID).Order("post_number desc").Limit(1).Find(&lastPost).RecordNotFound() {
+		postNum = lastPost.PostNumber
+	}
+
+	newPost.PostNumber = postNum + 1
+
+	if !tx.NewRecord(*newPost) {
+		tx.Rollback()
 		return 0, &repository.IDError{err.Error()}
 	}
 
-	if err := pr.db.Create(newPost).Error; err != nil {
+	if err := tx.Create(newPost).Error; err != nil {
+		tx.Rollback()
 		return 0, &repository.IOError{err.Error()}
 	}
 
+	tx.Commit()
 	return newPost.ID, nil
 }
 
