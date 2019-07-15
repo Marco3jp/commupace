@@ -35,6 +35,7 @@ func (mar *ManagerAccountRepositoryImpl) FindOne(id uint) (managerAccount *model
 }
 
 func (mar *ManagerAccountRepositoryImpl) FindOneFromManagerAccountId(managerAccountId string) (managerAccount *model.ManagerAccount, err error) {
+	managerAccount = &model.ManagerAccount{}
 	if mar.db.Where("manager_account_id = ?", managerAccountId).First(managerAccount).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: ManagerAccountTable"}
 	}
