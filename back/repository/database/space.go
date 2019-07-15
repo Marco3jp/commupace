@@ -35,7 +35,8 @@ func (sr *SpaceRepositoryImpl) FindOne(id uint) (space *model.Space, err error) 
 }
 
 func (sr *SpaceRepositoryImpl) FindFromLocation(locationId uint) (spaces []model.Space, err error) {
-	if sr.db.Where("location_id = ?", locationId).Find(spaces).RecordNotFound() {
+	sr.db.Where("location_id = ?", locationId).Find(&spaces)
+	if len(spaces) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}
 	}
 
@@ -43,7 +44,8 @@ func (sr *SpaceRepositoryImpl) FindFromLocation(locationId uint) (spaces []model
 }
 
 func (sr *SpaceRepositoryImpl) FetchRangeFromLocation(locationId uint, count uint) (spaces []model.Space, err error) {
-	if sr.db.Where("location_id = ?", locationId).Last(spaces, count).RecordNotFound() {
+	sr.db.Where("location_id = ?", locationId).Find(&spaces).Order("id desc").Limit(count)
+	if len(spaces) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}
 	}
 
@@ -51,7 +53,8 @@ func (sr *SpaceRepositoryImpl) FetchRangeFromLocation(locationId uint, count uin
 }
 
 func (sr *SpaceRepositoryImpl) FetchRangeFromLocations(locationIds []uint, count uint) (spaces []model.Space, err error) {
-	if sr.db.Where("location_id IN (?)", locationIds).Last(spaces, count).RecordNotFound() {
+	sr.db.Where("location_id IN (?)", locationIds).Find(&spaces).Order("id desc").Limit(count)
+	if len(spaces) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: SpaceTable"}
 	}
 

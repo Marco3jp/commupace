@@ -35,7 +35,8 @@ func (pr *PostRepositoryImpl) FindOne(id uint) (post *model.Post, err error) {
 }
 
 func (pr *PostRepositoryImpl) FindFromCommunityId(communityId uint) (posts []model.Post, err error) {
-	if pr.db.Where("community_id = ?", communityId).Find(posts).RecordNotFound() {
+	pr.db.Where("community_id = ?", communityId).Find(&posts)
+	if len(posts) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: postTable"}
 	}
 
@@ -46,7 +47,8 @@ func (pr *PostRepositoryImpl) FindFromCommunityId(communityId uint) (posts []mod
 // func (pr *PostRepositoryImpl) FindFromThread(threadId uint) (posts []model.Post, err error){}
 
 func (pr *PostRepositoryImpl) FetchRangeFromCommunityId(communityId uint, count uint) (posts []model.Post, err error) {
-	if pr.db.Where("community_id = ?", communityId).Order("post_number desc").Limit(count).Find(posts).RecordNotFound() {
+	pr.db.Where("community_id = ?", communityId).Order("post_number desc").Limit(count).Find(&posts)
+	if len(posts) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: postTable"}
 	}
 

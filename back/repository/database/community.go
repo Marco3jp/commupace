@@ -43,7 +43,8 @@ func (cr *CommunityRepositoryImpl) FindOneFromCommunityId(communityId string) (c
 }
 
 func (cr *CommunityRepositoryImpl) FindFromSpace(spaceId uint) (communities []model.Community, err error) {
-	if cr.db.Where("space_id = ?", spaceId).Find(communities).RecordNotFound() {
+	cr.db.Where("space_id = ?", spaceId).Find(&communities)
+	if len(communities) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
 	}
 
@@ -51,7 +52,8 @@ func (cr *CommunityRepositoryImpl) FindFromSpace(spaceId uint) (communities []mo
 }
 
 func (cr *CommunityRepositoryImpl) FetchRangeFromSpace(spaceId uint, count uint) (communities []model.Community, err error) {
-	if cr.db.Where("space_id = ?", spaceId).Last(communities, count).RecordNotFound() {
+	cr.db.Where("space_id = ?", spaceId).Find(&communities).Order("id desc").Limit(count)
+	if len(communities) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
 	}
 
@@ -59,7 +61,8 @@ func (cr *CommunityRepositoryImpl) FetchRangeFromSpace(spaceId uint, count uint)
 }
 
 func (cr *CommunityRepositoryImpl) FetchRangeFromSpaces(spaceIds []uint, count uint) (communities []model.Community, err error) {
-	if cr.db.Where("space_id IN (?)", spaceIds).Last(communities, count).RecordNotFound() {
+	cr.db.Where("space_id IN (?)", spaceIds).Find(&communities).Order("id desc").Limit(count)
+	if len(communities) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityTable"}
 	}
 

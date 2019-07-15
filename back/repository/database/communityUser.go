@@ -51,7 +51,8 @@ func (cur *CommunityUserRepositoryImpl) FindFromCommunityAccount(communityAccoun
 }
 
 func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunity(communityId uint, count uint) (communityUsers []model.CommunityUser, err error) {
-	if cur.db.Where("community_id = ?", communityId).Last(communityUsers, count).RecordNotFound() {
+	cur.db.Where("community_id = ?", communityId).Find(&communityUsers).Order("id desc").Limit(count)
+	if len(communityUsers) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
 	}
 
@@ -59,7 +60,8 @@ func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunity(communityId uint
 }
 
 func (cur *CommunityUserRepositoryImpl) FetchRangeFromCommunityAccount(communityAccountId uint, count uint) (communityUsers []model.CommunityUser, err error) {
-	if cur.db.Where("community_account_id = ?", communityAccountId).Last(communityUsers, count).RecordNotFound() {
+	cur.db.Where("community_account_id = ?", communityAccountId).Find(&communityUsers).Order("id desc").Limit(count)
+	if len(communityUsers) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: communityUserTable"}
 	}
 
