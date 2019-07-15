@@ -31,3 +31,9 @@ type CommunityModule interface {
 	// CreateCommunity() (communityId string, err error)
 	SearchCommunityFromCoordinates(coordinates model.Coordinates, zoomLevel uint) (communityList []model.Community, err error)
 }
+
+type ChatModule interface {
+	CreatePost(communityAccountId uint, communityId uint, postText string, postPath string) model.Post
+	Post(post model.Post) error
+	GetPosts(communityId uint, count uint) (posts []model.Post, err error)
+}
