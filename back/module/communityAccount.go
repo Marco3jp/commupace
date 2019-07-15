@@ -15,7 +15,7 @@ func NewCommunityAccountModule(mar repository.ManagerAccountRepository, car repo
 	return &CommunityAccountModuleImpl{ManagerAccountRepo: mar, CommunityAccountRepo: car, CommunityUserRepo: cur}
 }
 
-func (cam *CommunityAccountModuleImpl) CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount) (err error) {
+func (cam *CommunityAccountModuleImpl) CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount)  error {
 	managerAccount, err := cam.ManagerAccountRepo.FindOneFromManagerAccountId(managerAccountId)
 	if err != nil {
 		return err
