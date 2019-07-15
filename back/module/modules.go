@@ -20,6 +20,7 @@ type ManagerAccountModule interface {
 
 type CommunityAccountModule interface {
 	CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount) (err error)
+	IsManagedAccount(managerAccountId string, communityAccountId uint) bool
 	JoinCommunity(communityAccountId string, communityId string) error
 
 	// LeaveCommunity() error

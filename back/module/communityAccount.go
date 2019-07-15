@@ -11,8 +11,8 @@ type CommunityAccountModuleImpl struct {
 	CommunityUserRepo    repository.CommunityUserRepository
 }
 
-func NewCommunityAccountModule(car repository.CommunityAccountRepository) CommunityAccountModule {
-	return &CommunityAccountModuleImpl{CommunityAccountRepo: car}
+func NewCommunityAccountModule(mar repository.ManagerAccountRepository, car repository.CommunityAccountRepository, cur repository.CommunityUserRepository) CommunityAccountModule {
+	return &CommunityAccountModuleImpl{ManagerAccountRepo: mar, CommunityAccountRepo: car, CommunityUserRepo: cur}
 }
 
 func (cam *CommunityAccountModuleImpl) CreateCommunityAccount(managerAccountId string, communityAccount *model.CommunityAccount) (err error) {
@@ -28,6 +28,20 @@ func (cam *CommunityAccountModuleImpl) CreateCommunityAccount(managerAccountId s
 		return err
 	}
 	return nil
+}
+
+func (cam *CommunityAccountModuleImpl) IsManagedAccount(managerAccountId string, communityAccountId uint) bool {
+	managerAccount, err := cam.ManagerAccountRepo.FindOneFromManagerAccountId(managerAccountId)
+	if err != nil {
+		return false
+	}
+
+	communityAccount, err := cam.CommunityAccountRepo.FindOne(communityAccountId)
+	if err != nil {
+		return false
+	}
+
+	return managerAccount.ID == communityAccount.ManagerAccountID
 }
 
 func (cam *CommunityAccountModuleImpl) JoinCommunity(communityAccountId string, communityId string) error {
