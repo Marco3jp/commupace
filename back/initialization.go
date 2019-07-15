@@ -14,6 +14,7 @@ var (
 	tokenModule            module.TokenModule
 	managerAccountModule   module.ManagerAccountModule
 	communityAccountModule module.CommunityAccountModule
+	communityModule        module.CommunityModule
 	apiHandler             *handler.APIHandler
 )
 
@@ -21,9 +22,9 @@ func initObjects(db *gorm.DB) {
 	mar := database.NewManagerAccountRepository(db)
 	car := database.NewCommunityAccountRepository(db)
 	// cur := database.NewCommunityUserRepository(db)
-	// lr := database.NewLocationRepository(db)
-	// sr := database.NewSpaceRepository(db)
-	// cr := database.NewCommunityRepository(db)
+	lr := database.NewLocationRepository(db)
+	sr := database.NewSpaceRepository(db)
+	cr := database.NewCommunityRepository(db)
 	// pr := database.NewPostRepository(db)
 	atr := memory.NewAccessTokenRepository(&sync.Map{})
 	rtr := memory.NewRefreshTokenRepository(&sync.Map{})
@@ -31,8 +32,9 @@ func initObjects(db *gorm.DB) {
 	tokenModule = module.NewTokenModule(atr, rtr)
 	managerAccountModule = module.NewManagerAccountModule(mar)
 	communityAccountModule = module.NewCommunityAccountModule(car)
+	communityModule = module.NewCommunityModule(lr, sr, cr)
 
-	apiHandler = handler.NewAPIHandler(tokenModule, managerAccountModule, communityAccountModule)
+	apiHandler = handler.NewAPIHandler(tokenModule, managerAccountModule, communityAccountModule, communityModule)
 }
 
 func initRouting(r *gin.Engine) {
@@ -45,32 +47,32 @@ func initRouting(r *gin.Engine) {
 			// auth.POST("/refresh")
 		}
 		/*
-				managerAccount := api.Group("/manager_account")
-				{
-					managerAccount.POST("/add_community_account")
-					managerAccount.GET("/community_account_list")
-					// managerAccount.PATCH("/info")
-				}
+		managerAccount := api.Group("/manager_account")
+		{
+			managerAccount.POST("/add_community_account")
+			managerAccount.GET("/community_account_list")
+			// managerAccount.PATCH("/info")
+		}
 
-				communityAccount := api.Group("/community_account")
-				{
-					communityAccount.GET("/info")
-					communityAccount.PATCH("/info")
-				}
-
-				community := api.Group("/community")
-				{
-					community.POST("/create")
-					community.GET("/search")
-					community.GET("/info")
-					community.PATCH("/info")
-				}
-
-				chat := community.Group("/chat")
-				{
-					chat.GET("/post")
-					chat.POST("/post")
-				}
-			*/
+		communityAccount := api.Group("/community_account")
+		{
+			communityAccount.GET("/info")
+			communityAccount.PATCH("/info")
+		}
+		*/
+		community := api.Group("/community", apiHandler.SearchCommunity)
+		{
+			// community.POST("/create")
+			community.GET("/search")
+			// community.GET("/info")
+			// community.PATCH("/info")
+		}
+		/*
+		chat := community.Group("/chat")
+		{
+			chat.GET("/post")
+			chat.POST("/post")
+		}
+		*/
 	}
 }
