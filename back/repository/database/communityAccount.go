@@ -27,6 +27,7 @@ func (car *CommunityAccountRepositoryImpl) Add(newCommunityAccount *model.Commun
 }
 
 func (car *CommunityAccountRepositoryImpl) FindOne(id uint) (communityAccount *model.CommunityAccount, err error) {
+	communityAccount = &model.CommunityAccount{}
 	if car.db.First(communityAccount, id).RecordNotFound() {
 		return nil, &repository.NotFoundRecordError{"Action: CommunityAccountTable"}
 	}
