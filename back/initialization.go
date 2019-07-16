@@ -41,7 +41,7 @@ func initObjects(db *gorm.DB) {
 }
 
 func initRouting(r *gin.Engine) {
-	api := r.Group("/api/v1")
+	api := r.Group("/v1")
 	{
 		auth := api.Group("/auth")
 		{
