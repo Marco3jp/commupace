@@ -31,7 +31,7 @@ func (cm *ChatModuleImpl) Post(post model.Post) error {
 	return nil
 }
 
-func (cm *ChatModuleImpl) GetPosts(communityId uint, count uint) (posts []model.Post, err error) {
+func (cm *ChatModuleImpl) GetPosts(communityId uint, count uint) (posts []model.PostData, err error) {
 	posts, err = cm.PostRepo.FetchRangeFromCommunityId(communityId, communityId)
 	if err != nil {
 		return nil, err
