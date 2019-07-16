@@ -11,6 +11,7 @@ import CommunityThreadFront from '@components/community/thread/communityThreadLi
 import CommunityThread from '@components/community/thread/communityThread.vue';
 import Explore from '@view/explore';
 import MyPage from '@view/mypage';
+import signUp from "@view/signUp.vue";
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ Vue.use(Router);
 export default new Router({
     mode: 'history',
     routes: [
+        {
+            path: '/signUp',
+            name: 'signUp',
+            component: signUp,
+        },
         {
             path: '/myPage',
             name: 'myPage',
