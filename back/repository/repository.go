@@ -81,7 +81,7 @@ type PostRepository interface {
 	FindOne(id uint) (post *model.Post, err error)
 	FindFromCommunityId(communityId uint) (posts []model.Post, err error)
 	//FindFromThread(threadId uint) (posts []model.Post, err error) TODO: Threadが実装されたら追加
-	FetchRangeFromCommunityId(communityId uint, count uint) (posts []model.Post, err error)
+	FetchRangeFromCommunityId(communityId uint, count uint) (result []model.PostData, err error)
 	//FetchRangeFromThread(threadId uint, count uint) (posts []model.Post, err error) TODO: Threadが実装されたら追加
 	Update(newPost *model.Post) error
 	Delete(id uint) error
