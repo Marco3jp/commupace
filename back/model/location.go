@@ -8,6 +8,6 @@ type Location struct {
 }
 
 type Coordinates struct {
-	Latitude  float64 `gorm:"index:lat"`
-	Longitude float64 `gorm:"index:long"`
+	Latitude  float64 `gorm:"index"`
+	Longitude float64 `gorm:"index"`
 }
