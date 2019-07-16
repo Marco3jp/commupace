@@ -12,3 +12,8 @@ type Post struct {
 	PostType           string
 	PostPath           string
 }
+
+type PostData struct {
+	Post
+	CommunityAccount
+}
