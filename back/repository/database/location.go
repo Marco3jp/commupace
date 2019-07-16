@@ -62,7 +62,7 @@ func (lr *LocationRepositoryImpl) FetchRangeFromCoordinates(coordinates model.Co
 	eastBottom.Longitude = coordinates.Longitude + searchRange
 
 	lr.db.Where("latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?", westTop.Latitude, eastBottom.Latitude, westTop.Longitude, eastBottom.Longitude).
-		Find(&locations).Order("id desc").Limit(count)
+		Order("id desc").Limit(count).Find(&locations)
 
 	if len(locations) == 0 {
 		return nil, &repository.NotFoundRecordError{"Action: LocationTable"}
