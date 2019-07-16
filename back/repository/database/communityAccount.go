@@ -52,6 +52,15 @@ func (car *CommunityAccountRepositoryImpl) FindFromManagerAccount(managerAccount
 	return communityAccounts, nil
 }
 
+func (car *CommunityAccountRepositoryImpl) FindFromCommunityAccountIds(communityAccountIds []uint) (communityAccounts []model.CommunityAccount, err error) {
+	car.db.Where("ID IN (?)", communityAccountIds).Find(communityAccounts)
+	if len(communityAccounts) == 0 {
+		return nil, &repository.NotFoundRecordError{"Action: CommunityAccountTable"}
+	}
+
+	return communityAccounts, nil
+}
+
 func (car *CommunityAccountRepositoryImpl) Update(newCommunityAccount *model.CommunityAccount) error {
 	if err := car.db.Save(newCommunityAccount).Error; err != nil {
 		return &repository.IOError{err.Error()}
