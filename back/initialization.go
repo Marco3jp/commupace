@@ -68,11 +68,11 @@ func initRouting(r *gin.Engine) {
 			community.GET("/search", apiHandler.SearchCommunity)
 			// community.GET("/info")
 			// community.PATCH("/info")
-		}
-		chat := community.Group("/chat")
-		{
-			// chat.GET("/post")
-			chat.POST("/post", apiHandler.PostChat)
+			chat := community.Group("/chat")
+			{
+				chat.GET("/post", apiHandler.GetChat)
+				chat.POST("/post", apiHandler.PostChat)
+			}
 		}
 	}
 }
