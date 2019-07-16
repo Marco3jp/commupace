@@ -7,6 +7,15 @@ import store from "../store/main";
 
 Vue.use(Vuex);
 
+const accessToken = localStorage.getItem("access-token");
+const refreshToken = localStorage.getItem("refresh-token");
+const managerAccountId = localStorage.getItem("manager-account-id");
+
+if (accessToken !== null || refreshToken !== null || managerAccountId !== null) {
+    store.commit("saveTokenPairs", {accessToken: accessToken, refreshToken: refreshToken});
+    store.commit("saveManagerAccountId", managerAccountId);
+}
+
 // main vue の初期化
 new Vue({
     router,
