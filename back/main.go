@@ -2,13 +2,21 @@ package main
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"./model"
 	"github.com/gin-gonic/gin"
+	"os"
+	"fmt"
 )
 
 func main() {
-	db, err := gorm.Open("sqlite3", "test/test.db")
+	mysqlConnectionParams := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=%s",
+		os.Getenv("MYSQL_USER"),
+		os.Getenv("MYSQL_PASSWORD"),
+		os.Getenv("MYSQL_DOMAIN"),
+		os.Getenv("MYSQL_PORT"),
+		os.Getenv("MYSQL_NAME"),		"Asia%2FTokyo")
+	db, err := gorm.Open("mysql", mysqlConnectionParams)
 	if err != nil {
 		panic(err.Error())
 	}
