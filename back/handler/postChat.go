@@ -23,7 +23,7 @@ func (a *APIHandler) PostChat(c *gin.Context) {
 
 	body := PostChatRequestBody{}
 	c.BindJSON(&body)
-	if body.CommunityAccountId == 0 || body.ThreadId == 0 || body.CommunityId == 0 || body.PostText == "" || body.PostPath == "" {
+	if body.CommunityAccountId == 0 || body.CommunityId == 0 || body.PostText == "" || body.PostPath == "" {
 		c.JSON(400, gin.H{
 			"ok":                 false,
 			"isValidAccessToken": true,
