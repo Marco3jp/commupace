@@ -3,7 +3,6 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"../model"
-	"fmt"
 )
 
 type AddCommunityAccountRequestBody struct {
@@ -26,7 +25,6 @@ func (a *APIHandler) AddCommunityAccount(c *gin.Context) {
 
 	body := AddCommunityAccountRequestBody{}
 	c.ShouldBindJSON(&body)
-	fmt.Printf("%#v", body)
 	if body.DisplayId == "" || body.DisplayName == "" {
 		c.JSON(400, gin.H{
 			"ok":                 false,
