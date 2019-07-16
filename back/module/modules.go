@@ -35,5 +35,5 @@ type CommunityModule interface {
 type ChatModule interface {
 	CreatePost(communityAccountId uint, communityId uint, postText string, postPath string) model.Post
 	Post(post model.Post) error
-	GetPosts(communityId uint, count uint) (posts []model.Post, err error)
+	GetPosts(communityId uint, count uint) (posts []model.PostData, err error)
 }
