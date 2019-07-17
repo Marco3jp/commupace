@@ -19,11 +19,59 @@
             }
         },
         created(): void {
-            this.postData = chatPostListMock;
+            this.fetchNewPosts();
         },
         methods: {
             post(newPost) {
-                this.postData.push(newPost);
+                fetch(`/api/v1/community/chat/post`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "access-token": this.$store.getters.accessToken,
+                        "refresh-token": this.$store.getters.refreshToken,
+                        "manager-account-id": this.$store.getters.managerAccountId,
+                    },
+                    body: JSON.stringify(newPost),
+                }).then(response => {
+                    return response.json()
+                }).then(result => {
+                    this.fetchNewPosts();
+                })
+            },
+            fetchNewPosts() {
+                fetch(`/api/v1/community/chat/post?communityId=${parseInt(this.$route.params.communityId)}&count=10`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "access-token": this.$store.getters.accessToken,
+                        "refresh-token": this.$store.getters.refreshToken,
+                        "manager-account-id": this.$store.getters.managerAccountId,
+                    },
+                }).then(response => {
+                    return response.json();
+                }).then(result => {
+                    this.storePosts(result);
+                })
+            },
+            storePosts(result) {
+                for (let i = 0; i < result.posts.length; i++) {
+                    let dupFlag = false;
+                    for (let j = 0; j < this.postData.length; j++) {
+                        if (result.posts[i].PostNumber === this.postData[j].PostNumber) {
+                            dupFlag = true;
+                            break;
+                        }
+                    }
+                    if (!dupFlag) {
+                        this.postData.push(result.posts[i]);
+                    }
+                }
+                this.postData.sort((a, b) => {
+                    if (a.PostNumber > b.PostNumber) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+                })
             }
         }
     }
