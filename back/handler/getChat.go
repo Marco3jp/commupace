@@ -63,6 +63,7 @@ func (a *APIHandler) GetChat(c *gin.Context) {
 	result := make([]parsedPostData, len(posts))
 
 	for e := range posts {
+		result[e].ID = posts[e].Post.ID
 		result[e].CreatedAt = posts[e].Post.CreatedAt
 		result[e].UpdatedAt = posts[e].Post.UpdatedAt
 		result[e].CommunityAccountID = posts[e].CommunityAccountID
@@ -79,6 +80,7 @@ func (a *APIHandler) GetChat(c *gin.Context) {
 			Icon:        posts[e].Icon,
 			Status:      posts[e].Status,
 		}
+		result[e].CommunityAccount.ID = posts[e].CommunityAccount.ID
 	}
 
 	c.JSON(200, gin.H{
