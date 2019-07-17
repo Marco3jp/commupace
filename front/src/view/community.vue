@@ -24,7 +24,7 @@
                 }
             },
             moveLastVisitCommunity(communityId) {
-                this.$router.push({
+                this.$router.replace({
                     name: 'communityFront',
                     params: {communityId: communityId},
                 });
@@ -49,7 +49,6 @@
                 }
             }
         },
-
     }
 </script>
 
