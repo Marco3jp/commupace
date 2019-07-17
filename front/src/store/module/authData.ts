@@ -9,6 +9,7 @@ export interface tokenPairs {
 export interface authDataInterface {
     tokens: tokenPairs,
     managerAccountId: string,
+    communityAccountId: number,
 }
 
 const state: authDataInterface = {
@@ -17,6 +18,7 @@ const state: authDataInterface = {
         refreshToken: "",
     },
     managerAccountId: "",
+    communityAccountId: 0
 };
 
 export const auth: Module<authDataInterface, MainState> = {
@@ -33,6 +35,12 @@ export const auth: Module<authDataInterface, MainState> = {
         },
         managerAccountId: (state) => {
             return state.managerAccountId
+        },
+        hasManagerAccount: (state) => {
+            return state.tokens.accessToken !== "" && state.tokens.refreshToken !== "" && state.managerAccountId !== ""
+        },
+        communityAccountId: (state) => {
+            return state.communityAccountId
         }
     },
     mutations: {
@@ -44,6 +52,10 @@ export const auth: Module<authDataInterface, MainState> = {
         saveManagerAccountId(state, managerAccountId) {
             state.managerAccountId = managerAccountId;
             localStorage.setItem("manager-account-id", managerAccountId);
+        },
+        saveCommunityAccountId(state, communityAccountId: number) {
+            state.communityAccountId = communityAccountId;
+            localStorage.setItem("community-account-id", communityAccountId.toString());
         }
     },
 };
