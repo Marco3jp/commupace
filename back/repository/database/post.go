@@ -64,7 +64,7 @@ func (pr *PostRepositoryImpl) FetchRangeFromCommunityId(communityId uint, count 
 	// pr.db.Where("community_id = ?", communityId).Order("post_number desc").Limit(count).Find(&posts)
 	result = make([]model.PostData, 0)
 	pr.db.Table("posts").
-		Select("community_accounts.display_id, community_accounts.display_name, community_accounts.icon, community_accounts.status, posts.created_at, posts.updated_at, posts.community_account_id, posts.thread_id, posts.post_text, posts.post_number, posts.post_type, posts.post_path, posts.community_id").
+		Select("posts.id, posts.created_at, posts.updated_at, posts.community_account_id, posts.thread_id, posts.post_text, posts.post_number, posts.post_type, posts.post_path, posts.community_id, community_accounts.id, community_accounts.display_id, community_accounts.display_name, community_accounts.icon, community_accounts.status").
 		Joins("inner join community_accounts on posts.community_id = ? and posts.community_account_id = community_accounts.id", communityId).
 		Order("post_number desc").
 		Limit(count).
