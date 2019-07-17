@@ -17,8 +17,14 @@
             post() {
                 const newPostMessage = this.$store.getters.getPostText(this.$route.params.communityId);
                 if (newPostMessage !== undefined && newPostMessage !== "") {
-                    const newPost = postChat(newPostMessage);
-                    this.$emit("post", newPost); // for test. if connect server, reload automatically.
+                    const newPost = {
+                        "communityAccountId": parseInt(this.$store.getters.communityAccountId),
+                        "threadId": 0,
+                        "communityId": parseInt(this.$route.params.communityId),
+                        "postText": newPostMessage,
+                        "postPath": "/",
+                    };
+                    this.$emit("post", newPost);
                     this.$store.commit("resetPostText", this.$route.params.communityId);
                 }
             }
