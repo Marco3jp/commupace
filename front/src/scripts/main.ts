@@ -18,6 +18,16 @@ if (accessToken !== null || refreshToken !== null || managerAccountId !== null |
     store.commit("saveCommunityAccountId", communityAccountId);
 }
 
+router.beforeEach((to, from, next) => {
+    if (to.name === "signUp" && store.getters.hasManagerAccount) {
+        next({name: 'community'});
+    } else if (to.name === "signUp" || store.getters.hasManagerAccount) {
+        next();
+    } else {
+        next({name: 'signUp'});
+    }
+});
+
 // main vue の初期化
 new Vue({
     router,
