@@ -1,14 +1,14 @@
 <template>
     <div id="speech-balloon">
         <div id="speech-balloon-meta">
-            <div id="speech-user-name">{{postData.postUser.userName}}</div>
-            <div id="speech-timestamp">
+            <div id="speech-user-name">{{postData.CommunityAccount.DisplayName}}</div>
+            <!--div id="speech-timestamp">
                 <span v-if="!isToday" class="speech-timestamp-date">{{date}}</span>
                 <span class="speech-timestamp-time">{{time}}</span>
-            </div>
+            </div-->
         </div>
         <div id="speech-body">
-            <div id="speech-body-text">{{postData.postBody.text}}</div>
+            <div id="speech-body-text">{{postData.PostText}}</div>
         </div>
     </div>
 </template>

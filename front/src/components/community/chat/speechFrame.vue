@@ -1,6 +1,6 @@
 <template>
     <div class="speechFrame">
-        <speech-balloon v-for="post in postData" :postData="post"></speech-balloon>
+        <speech-balloon v-for="post in postData" :postData="post" :key="post.PostNumber"></speech-balloon>
     </div>
 </template>
 
