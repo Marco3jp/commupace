@@ -1,11 +1,11 @@
 <template>
     <router-link :to="location" id="community-list-content">
         <div id="icon">
-            <img id="icon-img" v-if="!isFontIcon" :src="this.community.icon" :alt=alt>
-            <i v-if="isFontIcon" id="icon-i" class="fas" :class="this.community.icon"></i>
+            <!--img id="icon-img" v-if="!isFontIcon" :src="this.community.icon" :alt=alt>
+            <i v-if="isFontIcon" id="icon-i" class="fas" :class="this.community.icon"></i-->
         </div>
         <div id="community-name">
-            <span>{{this.community.name}}</span>
+            <span>{{this.community.CommunityName}}</span>
         </div>
     </router-link>
 </template>
@@ -21,16 +21,16 @@
                 location: {
                     name: 'communityFront',
                     params: {
-                        communityId: this.community.id,
+                        communityId: this.community.ID,
                     }
                 },
                 alt: `${this.community.name}のアイコン`
             }
         },
         computed: {
-            isFontIcon: function () {
+            /*isFontIcon: function () {
                 return this.community.isFontIcon
-            }
+            }*/
         },
     }
 </script>
