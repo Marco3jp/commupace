@@ -39,7 +39,7 @@ func (a *APIHandler) GetChat(c *gin.Context) {
 	}
 
 	communityId, communityIdErr := strconv.ParseUint(rawCommunityId, 10, 64)
-	count, countErr := strconv.ParseUint(rawCount, 19, 64)
+	count, countErr := strconv.ParseUint(rawCount, 10, 64)
 
 	if communityIdErr != nil || countErr != nil {
 		c.JSON(400, gin.H{
