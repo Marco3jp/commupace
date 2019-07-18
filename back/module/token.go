@@ -1,7 +1,7 @@
 package module
 
 import (
-	"../repository"
+	"github.com/Marco3jp/commupace/back/repository"
 	"time"
 )
 

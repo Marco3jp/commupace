@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"./repository/database"
-	"./repository/memory"
-	"./module"
-	"./handler"
+	"github.com/Marco3jp/commupace/back/repository/database"
+	"github.com/Marco3jp/commupace/back/repository/memory"
+	"github.com/Marco3jp/commupace/back/module"
+	"github.com/Marco3jp/commupace/back/handler"
 	"github.com/jinzhu/gorm"
 	"sync"
 )

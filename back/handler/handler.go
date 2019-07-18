@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"../module"
+	"github.com/Marco3jp/commupace/back/module"
 )
 
 type APIHandler struct {

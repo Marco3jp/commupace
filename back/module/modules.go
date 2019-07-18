@@ -1,7 +1,7 @@
 package module
 
 import (
-	"../model"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 type TokenModule interface {

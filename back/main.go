@@ -1,15 +1,17 @@
 package main
 
 import (
+	"google.golang.org/appengine"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"./model"
+	"github.com/Marco3jp/commupace/back/model"
 	"github.com/gin-gonic/gin"
 	"os"
 	"fmt"
 )
 
 func main() {
+	appengine.Main()
 	mysqlConnectionParams := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=%s",
 		os.Getenv("MYSQL_USER"),
 		os.Getenv("MYSQL_PASSWORD"),

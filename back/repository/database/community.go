@@ -2,8 +2,8 @@ package database
 
 import (
 	"github.com/jinzhu/gorm"
-	".."
-	"../../model"
+	"github.com/Marco3jp/commupace/back/repository"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 type CommunityRepositoryImpl struct {

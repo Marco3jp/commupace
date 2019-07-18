@@ -1,6 +1,6 @@
 package repository
 
-import "../model"
+import "github.com/Marco3jp/commupace/back/model"
 
 type ManagerAccountRepository interface {
 	Add(newManagerAccount *model.ManagerAccount) (id uint, err error)

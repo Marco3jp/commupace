@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"../model"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 type AddCommunityAccountRequestBody struct {

@@ -1,8 +1,8 @@
 package module
 
 import (
-	"../repository"
-	"../model"
+	"github.com/Marco3jp/commupace/back/repository"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 type CommunityAccountModuleImpl struct {

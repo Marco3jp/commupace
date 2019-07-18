@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	"../model"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 func (a *APIHandler) SearchCommunity(c *gin.Context) {

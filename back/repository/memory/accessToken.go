@@ -2,8 +2,8 @@ package memory
 
 import (
 	"sync"
-	".."
-	"../../model"
+	"github.com/Marco3jp/commupace/back/repository"
+	"github.com/Marco3jp/commupace/back/model"
 )
 
 type AccessTokenRepositoryImpl struct {
