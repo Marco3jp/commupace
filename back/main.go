@@ -11,13 +11,20 @@ import (
 )
 
 func main() {
-	appengine.Main()
-	mysqlConnectionParams := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=%s",
-		os.Getenv("MYSQL_USER"),
-		os.Getenv("MYSQL_PASSWORD"),
-		os.Getenv("MYSQL_DOMAIN"),
-		os.Getenv("MYSQL_PORT"),
-		os.Getenv("MYSQL_NAME"),		"Asia%2FTokyo")
+	var mysqlConnectionParams string
+	if os.Getenv("NODE_ENV") == "production" && os.Getenv("USE_CLOUD_SQL") == "true" {
+		mysqlConnectionParams = fmt.Sprintf("%s@cloudsql(%s)/%s",
+			os.Getenv("MYSQL_USER"),
+			os.Getenv("INSTANCE_CONNECTION_NAME"),
+			os.Getenv("DB_NAME"))
+	} else {
+		mysqlConnectionParams = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=%s",
+			os.Getenv("MYSQL_USER"),
+			os.Getenv("MYSQL_PASSWORD"),
+			os.Getenv("MYSQL_DOMAIN"),
+			os.Getenv("MYSQL_PORT"),
+			os.Getenv("DB_NAME"), "Asia%2FTokyo")
+	}
 	db, err := gorm.Open("mysql", mysqlConnectionParams)
 	if err != nil {
 		panic(err.Error())
@@ -42,4 +49,5 @@ func main() {
 	initRouting(router)
 
 	router.Run(":5622")
+	appengine.Main()
 }
