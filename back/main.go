@@ -12,11 +12,13 @@ import (
 
 func main() {
 	var mysqlConnectionParams string
-	if os.Getenv("NODE_ENV") == "production" && os.Getenv("USE_CLOUD_SQL") == "true" {
-		mysqlConnectionParams = fmt.Sprintf("%s@cloudsql(%s)/%s",
+	if os.Getenv("USE_CLOUD_SQL") == "true" {
+		mysqlConnectionParams = fmt.Sprintf("%s:%s@unix(/cloudsql/%s)/%s?charset=utf8&parseTime=True&loc=%s",
 			os.Getenv("MYSQL_USER"),
+			os.Getenv("MYSQL_PASSWORD"),
 			os.Getenv("INSTANCE_CONNECTION_NAME"),
-			os.Getenv("DB_NAME"))
+			os.Getenv("DB_NAME"),
+			"Asia%2FTokyo")
 	} else {
 		mysqlConnectionParams = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=%s",
 			os.Getenv("MYSQL_USER"),
